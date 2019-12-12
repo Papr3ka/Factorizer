@@ -23,30 +23,46 @@ def inttest(x):
         return True
     else:
         return False
+def checkprime(x):
+    if x >= 2:
+        for y in range(2,x,1):
+            if not( x % y ):
+                return False
+    else:
+        return False
+    return True
 waitsetc = 1
+tstart = 0
+tend = 0
 clear()
 fact = int(input("Factorize:"))
-wait()
-clear()
-print("Factorizing...")
-factors = [1]
-tstart = time.perf_counter()
-for x in range(1,int(fact / 2) + 1,1):
-    ans = fact / x
-    if inttest(ans):
-        factors.append(int(ans))
-tend = time.perf_counter()
-factors.sort()
-clear()
-print("Done\n")
-if len(factors) > 2:
+if not(checkprime(fact)):
+    wait()
+    clear()
+    print("Factorizing...")
+    factors = [1]
+    tstart = time.perf_counter()
+    for x in range(1,int(fact / 2) + 1,1):
+        ans = fact / x
+        if inttest(ans):
+            factors.append(int(ans))
+    tend = time.perf_counter()
+    factors.sort()
+    clear()
+    print("Done\n")
     print(fact,"Has",len(factors),"Factors")
 else:
+    print("Done\n")
+    factors = [1,fact]
+    clear()
     print(fact,"Is a prime number")
 print("Showing Factors for",fact)
 print("\n")
 for x in factors:
     print(x)
-print("\nTime",int((tend - tstart) * 10000) / 10000,"Seconds")
+print("\n")
+print("Time:",'%.4f'%(tend - tstart),"Seconds")
 waitsetc = 0
-wait()        
+wait()
+clear()
+# End of Program
