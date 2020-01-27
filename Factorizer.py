@@ -35,33 +35,36 @@ waitsetc = 1
 tstart = 0
 tend = 0
 clear()
-fact = int(input("Factorize:"))
-if not(checkprime(fact)):
-    wait()
-    clear()
-    print("Factorizing...")
-    factors = [1]
-    tstart = time.perf_counter()
-    for x in range(1,int(fact / 2) + 1,1):
-        ans = fact / x
-        if inttest(ans):
-            factors.append(int(ans))
-    tend = time.perf_counter()
-    factors.sort()
-    clear()
-    print("Done\n")
-    print(fact,"Has",len(factors),"Factors")
-else:
-    print("Done\n")
-    factors = [1,fact]
-    clear()
-    print(fact,"Is a prime number")
-print("Showing Factors for",fact)
-print("\n")
-for x in factors:
-    print(x)
-print("\n")
-print("Time:",'%.4f'%(tend - tstart),"Seconds")
+try:
+    fact = int(input("Factorize:"))
+    if not(checkprime(fact)):
+        wait()
+        clear()
+        print("Factorizing...")
+        factors = [1]
+        tstart = time.perf_counter()
+        for x in range(1,int(fact / 2) + 1,1):
+            ans = fact / x
+            if inttest(ans):
+                factors.append(int(ans))
+        tend = time.perf_counter()
+        factors.sort()
+        clear()
+        print("Done\n")
+        print(fact,"Has",len(factors),"Factors")
+    else:
+        print("Done\n")
+        factors = [1,fact]
+        clear()
+        print(fact,"Is a prime number")
+    print("Showing Factors for",fact)
+    print("\n")
+    for x in factors:
+        print(x)
+    print("\n")
+    print("Time:",'%.4f'%(tend - tstart),"Seconds")
+except:
+    print("Invalid Input")
 waitsetc = 0
 wait()
 clear()
